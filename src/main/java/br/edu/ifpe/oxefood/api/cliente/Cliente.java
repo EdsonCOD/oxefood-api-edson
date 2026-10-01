@@ -28,13 +28,13 @@ import lombok.Setter;
 
 public class Cliente extends EntidadeAuditavel  {
   
-    @Column //JPA
+    @Column(nullable = false, length = 100)
     private String nome;
 
    @Column
    private LocalDate dataNascimento;
 
-   @Column
+   @Column(unique = true)
    private String cpf;
 
    @Column
