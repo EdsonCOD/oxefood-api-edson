@@ -14,10 +14,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/cliente")
+@Tag(
+   name = "API Cliente",
+   description = "API responsável pelos servidos de cliente no sistema"
+)
 public class ClienteController {
 
     private final ClienteService clienteService;
@@ -25,6 +33,10 @@ public class ClienteController {
     public ClienteController(ClienteService service) {
         this.clienteService = service;
     }
+  @Operation(
+       summary = "Serviço responsável por salvar um cliente no sistema.",
+       description = "Exemplo de descrição de um endpoint responsável por inserir um cliente no sistema."
+   )
 
     @PostMapping
     public ResponseEntity<Cliente> cadastrar(@RequestBody @Valid ClienteDTO dto) {
